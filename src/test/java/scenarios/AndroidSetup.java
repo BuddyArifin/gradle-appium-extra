@@ -4,6 +4,7 @@ package scenarios;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.tools.internal.jxc.ap.Const;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
@@ -30,27 +31,27 @@ public class AndroidSetup extends InstanceDriver {
         File appDir = new File(Constants.apkDir);
         File app = new File(appDir, "app-debug-1.0.0.1.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("device","Android");
+        capabilities.setCapability("device", Constants.DEVICE);
 
-        capabilities.setCapability("appPackage", "com.app.sulley");
-        capabilities.setCapability("appActivity", "sea.olxsulley.presentation.view.activities.OlxIdEntranceActivity");
+        capabilities.setCapability("appPackage", Constants.APP_PACKAGE);
+        capabilities.setCapability("appActivity", Constants.APP_ACTIVITY);
 
-        capabilities.setCapability("deviceName","Galaxy S4");
-        capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("newCommandTimeout", 60 * 5);
+        capabilities.setCapability("deviceName", Constants.DEVICE_NAME);
+        capabilities.setCapability("platformName", Constants.PLATFORM_NAME);
+        capabilities.setCapability("newCommandTimeout", Constants.NEW_COMMAND_TIMEOUT);
         //capabilities.setCapability("udid", udid);
         
         //No Reset Apps
-        capabilities.setCapability("noReset", false);
-        capabilities.setCapability("fullReset", true);
+        capabilities.setCapability("noReset", Constants.IS_NO_RESET);
+        capabilities.setCapability("fullReset", Constants.IS_FULL_RESET);
 
         //No Keyboard Layout
-        capabilities.setCapability("unicodeKeyboard", "true");
+        capabilities.setCapability("unicodeKeyboard", Constants.IS_UNIKODE_KEYBOARD_ENABLED);
 
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
         driver =  new AndroidDriver(new URL(Constants.hubIP), capabilities);
-        Log.debug("SESSION CREATED : "+driver.getSessionId().toString()+" "+udid+" ");
+        Log.debug("SESSION CREATED : "+ driver.getSessionId().toString() + " " + udid + " ");
     }
 
     @Parameters({"udid"})
