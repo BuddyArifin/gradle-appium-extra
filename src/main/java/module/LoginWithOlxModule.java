@@ -1,11 +1,11 @@
 package module;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.BasePage;
 import pages.CategoryPreferencesPage;
 import pages.ListingPage;
-import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
 /**

@@ -1,11 +1,11 @@
 package module;
 
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.BasePage;
-import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
 /**

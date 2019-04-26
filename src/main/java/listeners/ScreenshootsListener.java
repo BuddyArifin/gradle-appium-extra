@@ -1,5 +1,6 @@
 package listeners;
 
+import io.qameta.allure.model.TestResult;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
@@ -7,7 +8,6 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import pages.BasePage;
 import pages.InstanceDriver;
-import ru.yandex.qatools.allure.utils.AnnotationManager;
 import utils.Log;
 
 import java.lang.annotation.Annotation;
@@ -28,19 +28,19 @@ public class ScreenshootsListener extends TestListenerAdapter  {
         driver = ((InstanceDriver)obj).driver;
         base = new BasePage(driver);
         try {
-            Log.debug("***** Error "+getTestTitle(testResult)+" test has failed *****");
+            Log.debug("***** Error "+getTestTitle()+" test has failed *****");
             base.getAttachment("FailedOn_"+testResult.getTestClass().getName()+testResult.getMethod().getMethodName()+".png");
 //            request.goToTracker(testResult, this.array);
             Log.debug("FailedOn_"+testResult.getTestClass().getName()+testResult.getMethod().getMethodName()+".png");
         } catch (Exception e){
-            Log.debug("-->Unable to screen capture, for test "+getTestTitle(testResult));
+            Log.debug("-->Unable to screen capture, for test "+getTestTitle());
             e.printStackTrace();
         }
     }
 
     @Override
     public void onTestStart(ITestResult testResult){
-        Log.debug("Running Test --> "+getTestTitle(testResult));
+        Log.debug("Running Test --> "+getTestTitle());
 //        this.array = AndroidSetup.array;
     }
 
@@ -50,7 +50,7 @@ public class ScreenshootsListener extends TestListenerAdapter  {
         driver = ((InstanceDriver)obj).driver;
         base = new BasePage(driver);
         try {
-            Log.debug("***** Success Execution for "+getTestTitle(testResult)+" *****");
+            Log.debug("***** Success Execution for "+getTestTitle()+" *****");
 //            request.goToTracker(testResult, this.array);
         } catch (Exception e){
             e.printStackTrace();
@@ -73,10 +73,9 @@ public class ScreenshootsListener extends TestListenerAdapter  {
         }
     }
 
-    private String getTestTitle(ITestResult result) {
-        annotations = result.getMethod().getConstructorOrMethod().getMethod().getAnnotations();
-        AnnotationManager annotationManager = new AnnotationManager(annotations);
-        return annotationManager.getTitle();
+    private String getTestTitle() {
+        TestResult result = new TestResult();
+        return result.getDescription();
     }
 
 }

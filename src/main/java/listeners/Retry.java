@@ -2,7 +2,6 @@ package listeners;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
-import ru.yandex.qatools.allure.utils.AnnotationManager;
 import utils.Log;
 
 /**
@@ -16,10 +15,10 @@ public class Retry implements IRetryAnalyzer {
     @Override
     public boolean retry(ITestResult result) {
         if (retryCount < maxRetryCount) {
-            AnnotationManager testAnnotationAllure = new AnnotationManager(result.getMethod().getConstructorOrMethod()
-                    .getMethod().getAnnotations());
-            Log.debug("######  Retry failed tc-scenarios : " + testAnnotationAllure.getTitle() + " ######");
-            retryCount++;
+//            AnnotationManager testAnnotationAllure = new AnnotationManager(result.getMethod().getConstructorOrMethod()
+//                    .getMethod().getAnnotations());
+//            Log.debug("######  Retry failed tc-scenarios : " + testAnnotationAllure.getTitle() + " ######");
+//            retryCount++;
             return true;
         }
         return false;

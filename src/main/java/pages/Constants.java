@@ -15,7 +15,7 @@ public class Constants {
 
   // List Configuration
   public static final String DEVICE = "device";
-  public static final String APP_PACKAGE = "com.app.sulley";
+  public static final String APP_PACKAGE = "com.app.tokobagus.betterb";
   public static final String APP_ACTIVITY = "sea.olxsulley.presentation.view.activities.OlxIdEntranceActivity";
   public static final String DEVICE_NAME = "Galaxy S4";
   public static final String PLATFORM_NAME = "Android";

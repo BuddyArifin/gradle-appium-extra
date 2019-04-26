@@ -4,8 +4,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
-import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
+import io.qameta.allure.Step;
 
 /**
  * Created by NugrohoSantoso on 9/6/16.

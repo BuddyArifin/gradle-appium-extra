@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AndroidFindBys;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.qameta.allure.Step;
 import module.FilterByMapsLocationModule;
 import module.HamburgerBarModule;
 import org.openqa.selenium.By;
@@ -12,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.FindElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
 import java.util.List;

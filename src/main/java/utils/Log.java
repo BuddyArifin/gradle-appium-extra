@@ -1,7 +1,7 @@
 package utils;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.*;
-import ru.yandex.qatools.allure.annotations.Step;
 
 
 /**

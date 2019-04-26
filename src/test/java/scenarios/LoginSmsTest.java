@@ -1,14 +1,14 @@
 package scenarios;
 
+import io.qameta.allure.Feature;
 import listeners.ScreenshootsListener;
 import org.testng.annotations.Listeners;
-import ru.yandex.qatools.allure.annotations.Features;
 
 /**
  * Created by NugrohoSantoso on 8/26/16.
  */
 @Listeners(ScreenshootsListener.class)
-@Features("Login Feature")
+@Feature("Login Feature")
 public class LoginSmsTest extends AndroidSetup{
     
     // login with SMS

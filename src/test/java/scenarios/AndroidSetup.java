@@ -4,7 +4,6 @@ package scenarios;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.tools.internal.jxc.ap.Const;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
@@ -55,13 +54,13 @@ public class AndroidSetup extends InstanceDriver {
     }
 
     @Parameters({"udid"})
-    @BeforeClass
+//    @BeforeClass
     public void setUp(@Optional String udid, ITestContext ctx) throws Exception{
         prepareAndroidForAppium(udid);
         ctx.setAttribute("WebDriver", this.driver);
     }
 
-    @AfterClass
+//    @AfterClass
     public void tearDown() throws Exception {
         driver.quit();
     }

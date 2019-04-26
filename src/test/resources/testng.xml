@@ -7,9 +7,9 @@
         <listener class-name="listeners.RetryListeners" />
     </listeners>
 
-   <test name="Login Sulley 01 OLXID" preserve-order="false">
+   <test name="Running Sample Test" preserve-order="false">
        <classes>
-          <class name="scenarios.LoginPageTest"/>
+          <class name="scenarios.sampleTests.LoginTests"/>
        </classes>
     </test>
 </suite>
