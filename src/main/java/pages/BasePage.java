@@ -1,6 +1,5 @@
 package pages;
 
-import athena.Sinon;
 import com.google.common.base.Function;
 import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Attachment;
@@ -29,17 +28,12 @@ import java.util.concurrent.TimeUnit;
 public class BasePage  {
 
     protected WebDriver driver;
-    Sinon rdata;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
 //        this.rdata = new Sinon();
     }
 
-    protected Sinon getSinonUserData() {
-        return this.rdata;
-    }
-    
     protected void waitForVisibilityOf(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));

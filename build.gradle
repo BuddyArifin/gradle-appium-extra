@@ -1,7 +1,11 @@
 group 'olxid-mobile-sulley'
 version '1.0-SNAPSHOT'
+
+import groovyx.gpars.GParsPool;
+
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'groovy'
 
 buildscript {
     repositories {
@@ -9,6 +13,7 @@ buildscript {
     }
     dependencies {
         classpath 'io.qameta.allure:allure-gradle:2.5'
+        classpath 'org.codehaus.gpars:gpars:1.2.1'
     }
 }
 apply plugin: 'io.qameta.allure'
@@ -31,7 +36,51 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'org.slf4j:slf4j-simple:1.7.21'
     compile 'io.qameta.allure:allure-testng:2.10.0'
+    compile 'info.cukes:cucumber-testng:1.2.5'
+    compile 'info.cukes:cucumber-java:1.2.5'
+    compile 'info.cukes:cucumber-testng:1.2.5'
+}
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task runInParallel {
+    dependsOn assemble, compileTestJava
+    doLast {
+        parallelTask()
+    }
+}
+
+task runInSequence {
+    dependsOn assemble, compileTestJava
+    doLast {
+        singleRun()
+    }
+}
+
+def singleRun() {
+    javaexec {
+        main = "cucumber.api.cli.Main"
+        classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+        args = ['--plugin', 'pretty', '--glue', 'com.gembira', "${project.projectDir}/src/test/java/com/gembira/features"]
+    }
+}
+
+def parallelTask() {
+    def features = []
+
+    GParsPool.withPool(3) {
+        features.eachParallel { File file ->
+            javaexec {
+                main = "cucumber.api.cli.Main"
+                classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+                args = ['--plugin', 'pretty', '--glue', 'com.gembira.step_definitions', 'src/test/java/com.gembira.features']
+            }
+        }
+    }
 }
 
 allure {

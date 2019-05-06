@@ -1,4 +1,4 @@
-package scenarios.sampleTests;
+package com.gembira.sampleTests;
 
 public class BaseConfig {
 

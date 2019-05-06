@@ -9,7 +9,7 @@
 
    <test name="Running Sample Test" preserve-order="false">
        <classes>
-          <class name="scenarios.sampleTests.LoginTests"/>
+          <class name="com.gembira.sampleTests.LoginTests"/>
        </classes>
     </test>
 </suite>
